@@ -60,9 +60,15 @@ class Cart():
       turns right the third time, and then repeats ...
     """
     if self.turn_state == 0:
+      self.orientation -= 90
+    elif self.turn_state == 1:
+      pass
+    elif self.turn_state == 2:
       self.orientation += 90
-      self.orientation %= 360
+
     self.turn_state += 1
+
+    self.orientation %= 360
     self.turn_state %= 3
 
   def move(self, grid):
@@ -87,7 +93,7 @@ class Cart():
 
     if grid_value == '\\':
       # ^,v turn left; <,> turn right
-      self.orientation += (-90 if self.orientation % 180 == 0 else -90)
+      self.orientation += (-90 if self.orientation % 180 == 0 else +90)
       self.orientation %= 360
     if grid_value == '/':
       # ^,v turn right; <,> turn left

@@ -44,7 +44,7 @@ class Grid():
 
     # Standardize as list of lists
     if isinstance(self.grid, str):
-      self.grid = list(map(list, zip(*[list(_.strip()) for _ in self.grid.splitlines()])))
+      self.grid = list(map(list, zip(*[list(_) for _ in self.grid.splitlines()])))
       # print(self.grid)
       # Now find all carts
       for irow, row in enumerate(self.grid):

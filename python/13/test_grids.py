@@ -19,3 +19,10 @@ def test_crash():
   while g.step() == "OKAY":
     pass
   assert g.crashes.__repr__() == '[(0, 3)]'
+
+
+def test_toy_from_website():
+  g = Grid(file="toy_example.txt")
+  while g.step() == "OKAY":
+    pass
+  assert g.crashes.__repr__() == '[(7, 3)]'
