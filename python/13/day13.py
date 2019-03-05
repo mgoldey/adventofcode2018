@@ -4,7 +4,7 @@ from grid import Grid
 
 
 def part1():
-  part1_grid = Grid(file="part1.txt")
+  part1_grid = Grid(file="input.txt")
   while part1_grid.step() == "OKAY":
     pass
   print(part1_grid.crashes)
