@@ -11,7 +11,10 @@ def part1():
 
 
 def part2():
-  pass
+  part2_grid = Grid(file="input.txt")
+  while len(part2_grid.carts) > 1:
+    part2_grid.step()
+  print(part2_grid.carts[0].location)
 
 
 def main():

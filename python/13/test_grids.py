@@ -26,3 +26,9 @@ def test_toy_from_website():
   while g.step() == "OKAY":
     pass
   assert g.crashes.__repr__() == '[(7, 3)]'
+
+def test_last_cart_standing():
+  g = Grid(file="toy_example2.txt")
+  while len(g.carts)>1:
+    g.step()
+  assert g.carts[0].location.__repr__() == '(6, 4)'

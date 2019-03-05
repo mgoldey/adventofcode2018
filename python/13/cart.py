@@ -30,6 +30,14 @@ def check_for_crash(cart, grid):
   # hit another cart
   hit_another_cart = any([not (cart - other_cart) for other_cart in grid.carts if other_cart != cart])
 
+  # log this in the crashed state variable for this cart and the other one
+  if hit_another_cart:
+    cart.crashed = True
+    other_cart = [
+      possible_cart for possible_cart in grid.carts if (cart - possible_cart) == 0 and possible_cart != cart
+    ][0]
+    other_cart.crashed = True
+
   return not_a_valid_place_on_grid or hit_a_wall or hit_another_cart
 
 

@@ -99,15 +99,20 @@ class Grid():
       """
     # loop over rows
     # loop over carts, from top to bottom (y) and from left to right (x)
+    crashed = False
     for cart in sorted(self.carts, key=lambda c: (c.location.y, c.location.x)):
       result = cart.move(self)
 
       # update
       if result == "CRASH":
+        crashed = True
         self.grid[cart.location.x][cart.location.y] = 'X'
         self.crashes.append(cart.location)
-        return "CRASH"
-    return "OKAY"
+
+    # remove crashed carts
+    self.carts = [_ for _ in self.carts if not _.crashed]
+
+    return "CRASH" if crashed else "OKAY"
 
   def __repr__(self):
     r"""
