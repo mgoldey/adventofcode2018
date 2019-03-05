@@ -38,8 +38,9 @@ class Grid():
       with open(self.file) as input_grid_file:
         self.grid = input_grid_file.read()
 
-    # re-initialize carts
+    # re-initialize lists
     self.carts = []
+    self.crashes = []
 
     # Standardize as list of lists
     if isinstance(self.grid, str):
